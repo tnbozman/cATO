@@ -12,7 +12,7 @@ Run the following cmd to install:
 - vim: terminal text editor (feel free to byo)
 
 ```
-sudo apt intstall net-tools openssh-server git vim
+> sudo apt intstall net-tools openssh-server git vim
 ```
 
 ## Establishing SSH between Windows and Ubuntu VM
@@ -66,7 +66,7 @@ Last login: Thu Dec  8 21:04:05 2022 from 172.29.0.1
 Now we have verified ssh is working correctly, we will add ssh certificates so we no longer require a password login.
 
 ```
-ssh-keygen -t ed25519 -C "unique name to identify this key"
+> ssh-keygen -t ed25519 -C "unique name to identify this key"
 ```
 
 Example:
@@ -90,14 +90,14 @@ The key's randomart image is:
 
 The following commands run on windows will tranfer the public key to the Ubuntu VM:
 ```
-scp -i C:\Users\{windows-username}\.ssh\ubuntu-cato.pub {ubuntu-username}@172.25.181.200:/home/{ubuntu-username}/.ssh/authorized_keys
+> scp -i C:\Users\{windows-username}\.ssh\ubuntu-cato.pub {ubuntu-username}@172.25.181.200:/home/{ubuntu-username}/.ssh/authorized_keys
 ```
 
 Example:
 NOTE: Replace {windows-username}
 
 ```
-scp -i C:\Users\{windows-username}\.ssh\ubuntu-cato.pub dev-user@172.25.181.200:/home/dev-user/.ssh/authorized_keys
+> scp -i C:\Users\{windows-username}\.ssh\ubuntu-cato.pub dev-user@172.25.181.200:/home/dev-user/.ssh/authorized_keys
 ```
 
 It will ask you to try 'yes' to connect and provide your ubuntu user password.
@@ -120,8 +120,6 @@ Host cato-cm
     HostName 172.25.181.200
     IdentityFile C:\Users\{windows-username}\.ssh\ubuntu-cato
 ```
-
-
 
 ## Using Visual Studio Code as your SSH Client
 
