@@ -17,7 +17,8 @@ export default {
               { text: 'Introduction', link: '/get-started/' },
               { text: 'Ubuntu VM on windows', link: '/get-started/hyper-v-ubuntu/' },
               { text: 'Setting up Ubuntu', link: '/get-started/hyper-v-ubuntu/ubuntu-setup' },
-              { text: 'Minikube on Ubuntu', link: '/get-started/ubuntu-minikube/' }
+              { text: 'Minikube on Ubuntu', link: '/get-started/ubuntu-minikube/' },
+              { text: 'Minikube Setup', link: '/get-started/ubuntu-minikube/minikube-setup' }
             ]
           },
             {
