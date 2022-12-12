@@ -1,0 +1,28 @@
+# https://www.cloudbees.com/blog/how-to-install-and-run-jenkins-with-docker-compose
+# https://www.youtube.com/watch?v=f4idgaq2VqA
+# https://devopscube.com/docker-containers-as-build-slaves-jenkins/
+
+# docker-compose.yaml
+version: '3.3'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - /home/azureuser/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    privileged: true
+    user: root
+    container_name: agent
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6rXG5gLxsJWFIXQXvt3dZ7Nv2UnfEHMKeT9lXEYYdKqY9URk0cnqm+N7JNvBkqFzugUNJv0zzJ3E1+79dNsdHGO3skqTBZ1tXkbRFQXdwzqTC0bKRYgi7CxzjWBEXV1jgK370hP3tMkSMlIE4mLidx1tEPzGwQ8TCq2uqTEtmnI5LaKI3FFzDTMipRgmEcoi0bQIaIHgYAXFmvj6HQj70dVZpjr9kr8aZsDAdCXCKUr0bcGHtrbcntUSaq6DQIdX9dJPjjaJp+o41vhYoKAi4A5Dr3HFsxKyD+tpEGWV6eA9863TXlwcZUREo60BrRaXnsFntqBH6Tkc+2fgOJEFG5pVvm2rrbSUzAAXOynH5/JybBV9pbbJfunZ9Sv7L8O/rRWnhNCiZgfdArhxnjbFNKFkMRJn4QrkaTHjpGvHOofjucer4gPTwn3R0DT5TAbVAqk3w98D0xO4lyK9blRS9hjWzoahMBVJ3Z+dyoqIHY32gfmzwa6pyr3VlBQFAUO0= azureuser@the-troy
